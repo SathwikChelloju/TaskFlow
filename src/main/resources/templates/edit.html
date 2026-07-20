@@ -248,6 +248,187 @@ button:active {
     0% { opacity: 0; transform: scale(0.97) translateY(10px); }
     100% { opacity: 1; transform: scale(1) translateY(0); }
 }
+/* ==========================================
+   RESPONSIVE DESIGN
+========================================== */
+
+/* Laptop */
+@media (max-width:1200px){
+
+    .dashboard-container{
+        width:100%;
+        margin:0 10px;
+        padding:32px;
+    }
+
+    .task-creator-form{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .task-creator-form button{
+        grid-column:span 2;
+    }
+}
+
+/* Tablet */
+@media (max-width:900px){
+
+    body{
+        padding:25px 15px;
+    }
+
+    .dashboard-container{
+        padding:24px;
+    }
+
+    .header-bar{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:20px;
+    }
+
+    .header-actions{
+        width:100%;
+        justify-content:space-between;
+        flex-wrap:wrap;
+    }
+
+    .filter-form{
+        width:100%;
+        justify-content:space-between;
+        flex-wrap:wrap;
+    }
+
+    .filter-form select{
+        flex:1;
+        min-width:220px;
+    }
+
+    .logout-btn{
+        width:140px;
+    }
+
+    .task-creator-form{
+        grid-template-columns:1fr;
+    }
+
+    .task-creator-form button{
+        grid-column:span 1;
+        width:100%;
+    }
+}
+
+/* Mobile */
+@media (max-width:600px){
+
+    body{
+        padding:12px;
+    }
+
+    .dashboard-container{
+        padding:18px;
+        border-radius:18px;
+    }
+
+    h1{
+        font-size:1.4rem;
+    }
+
+    .brand-logo-icon{
+        width:36px;
+        height:36px;
+    }
+
+    .header-bar{
+        gap:18px;
+    }
+
+    .brand-section{
+        width:100%;
+        justify-content:center;
+    }
+
+    .header-actions{
+        width:100%;
+        flex-direction:column;
+        align-items:stretch;
+        gap:14px;
+    }
+
+    .filter-form{
+        flex-direction:column;
+        width:100%;
+    }
+
+    .filter-form select,
+    .filter-form button,
+    .logout-btn{
+        width:100%;
+    }
+
+    .task-creator-form{
+        grid-template-columns:1fr;
+        gap:14px;
+    }
+
+    .task-creator-form input,
+    .task-creator-form select,
+    .task-creator-form button{
+        width:100%;
+    }
+
+    .table-wrapper{
+        border:none;
+        overflow:visible;
+    }
+
+    table,
+    thead,
+    tbody,
+    th,
+    td,
+    tr{
+        display:block;
+        width:100%;
+    }
+
+    thead{
+        display:none;
+    }
+
+    tbody tr{
+        background:rgba(255,255,255,.03);
+        border:1px solid var(--border-subtle);
+        border-radius:16px;
+        padding:16px;
+        margin-bottom:16px;
+    }
+
+    td{
+        border:none;
+        padding:8px 0;
+        text-align:left !important;
+        width:100% !important;
+    }
+
+    td:nth-child(1){
+        color:var(--text-muted);
+        font-size:12px;
+    }
+
+    td:nth-child(2){
+        font-size:18px;
+        font-weight:700;
+    }
+
+    td:nth-child(6),
+    td:nth-child(7){
+        display:inline-flex;
+        width:auto !important;
+        margin-right:12px;
+        margin-top:10px;
+    }
+}
 </style>
 </head>
 

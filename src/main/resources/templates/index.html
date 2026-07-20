@@ -499,6 +499,199 @@ th:nth-child(7), td:nth-child(7) { width: 6%; text-align: center; }
     background-color: #c82333;
     transform: translateY(-2px);
 }
+/* =====================================================
+   RESPONSIVE DESIGN
+===================================================== */
+
+/* ---------- Large Tablets ---------- */
+
+@media (max-width:1200px){
+
+    .dashboard-container{
+        width:100%;
+        padding:32px;
+    }
+
+    .task-creator-form{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .task-creator-form button{
+        grid-column:span 2;
+    }
+
+}
+
+/* ---------- Tablets ---------- */
+
+@media (max-width:900px){
+
+    body{
+        padding:20px;
+    }
+
+    .dashboard-container{
+        padding:24px;
+    }
+
+    .header-bar{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:20px;
+    }
+
+    .brand-section{
+        width:100%;
+        justify-content:center;
+    }
+
+    .header-actions{
+        width:100%;
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        flex-wrap:wrap;
+        gap:15px;
+    }
+
+    .filter-form{
+        width:100%;
+        display:flex;
+        gap:12px;
+        flex-wrap:wrap;
+    }
+
+    .filter-form select{
+        flex:1;
+        min-width:220px;
+    }
+
+    .logout-btn{
+        min-width:150px;
+    }
+
+    .task-creator-form{
+        grid-template-columns:1fr;
+    }
+
+    .task-creator-form button{
+        grid-column:span 1;
+        width:100%;
+    }
+
+}
+
+/* ---------- Mobile ---------- */
+
+@media (max-width:600px){
+
+    body{
+        padding:12px;
+    }
+
+    .dashboard-container{
+        padding:18px;
+        border-radius:18px;
+    }
+
+    h1{
+        font-size:1.4rem;
+    }
+
+    .brand-logo-icon{
+        width:36px;
+        height:36px;
+    }
+
+    .header-bar{
+        gap:20px;
+    }
+
+    .brand-section{
+        justify-content:center;
+    }
+
+    .header-actions{
+        flex-direction:column;
+        align-items:stretch;
+    }
+
+    .filter-form{
+        flex-direction:column;
+        width:100%;
+    }
+
+    .filter-form select,
+    .filter-form button,
+    .logout-btn{
+        width:100%;
+    }
+
+    .task-creator-form{
+        grid-template-columns:1fr;
+        gap:15px;
+    }
+
+    .task-creator-form input,
+    .task-creator-form select,
+    .task-creator-form button{
+        width:100%;
+    }
+
+    .table-wrapper{
+        overflow:visible;
+        border:none;
+        background:none;
+    }
+
+    table,
+    thead,
+    tbody,
+    tr,
+    td,
+    th{
+        display:block;
+        width:100%;
+    }
+
+    thead{
+        display:none;
+    }
+
+    tbody tr{
+        background:rgba(255,255,255,.03);
+        border:1px solid rgba(255,255,255,.08);
+        border-radius:16px;
+        padding:18px;
+        margin-bottom:18px;
+    }
+
+    td{
+        border:none;
+        padding:8px 0;
+        width:100% !important;
+        text-align:left !important;
+    }
+
+    td:nth-child(1){
+        font-size:12px;
+        color:var(--text-muted);
+    }
+
+    td:nth-child(2){
+        font-size:18px;
+        font-weight:700;
+    }
+
+    td:nth-child(6),
+    td:nth-child(7){
+        display:inline-flex;
+        width:auto !important;
+        margin-top:10px;
+        margin-right:12px;
+    }
+
+}
 </style>
 </head>
 

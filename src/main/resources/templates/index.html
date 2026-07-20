@@ -88,15 +88,15 @@ body {
 /* ==========================================
    3. BRAND NAVIGATION HEADER
    ========================================== */
-.header-bar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 36px;
-    border-bottom: 1px solid var(--border-subtle);
-    padding-bottom: 24px;
-    gap: 20px;
-}
+   .header-bar{
+       display:flex;
+       justify-content:space-between;
+       align-items:center;
+       margin-bottom:36px;
+       border-bottom:1px solid var(--border-subtle);
+       padding-bottom:24px;
+       width:100%;
+   }
 
 .brand-section {
     display: flex;
@@ -214,10 +214,54 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover {
     opacity: 1;
 }
 
-.filter-form {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+/* ===========================
+   Header Right Section
+=========================== */
+
+.header-actions{
+    display:flex;
+    align-items:center;
+    justify-content:flex-end;
+    gap:16px;
+    flex-wrap:nowrap;
+}
+
+.filter-form{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin:0;
+    flex-wrap:nowrap;
+}
+
+.filter-form select{
+    min-width:180px;
+}
+
+.filter-form button{
+    white-space:nowrap;
+}
+
+.header-actions form{
+    margin:0;
+}
+
+.logout-btn{
+    background:var(--brand-gradient);
+    color:#fff;
+    border:none;
+    border-radius:10px;
+    padding:13px 24px;
+    font-size:14px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.25s;
+    white-space:nowrap;
+}
+
+.logout-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 6px 20px rgba(79,70,233,.45);
 }
 
 .filter-form select {
@@ -439,6 +483,22 @@ th:nth-child(7), td:nth-child(7) { width: 6%; text-align: center; }
     td:nth-child(2) { font-size: 1.1rem; font-weight: 600; }
     td:nth-child(6), td:nth-child(7) { display: inline-flex; width: auto !important; margin-right: 12px; margin-top: 6px; }
 }
+.logout-btn {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.logout-btn:hover {
+    background-color: #c82333;
+    transform: translateY(-2px);
+}
 </style>
 </head>
 
@@ -446,31 +506,46 @@ th:nth-child(7), td:nth-child(7) { width: 6%; text-align: center; }
 
 <div class="dashboard-container">
 
-    <header class="header-bar">
-        <div class="brand-section">
-            <div class="brand-logo-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                    <polyline points="9 11 12 14 22 4"></polyline>
-                    <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
-                </svg>
-            </div>
-            <h1>TaskFlow</h1>
-        </div>
+	<header class="header-bar">
 
-        <form th:action="@{/}" method="get" class="filter-form">
-            <select name="status" aria-label="Filter tasks by status">
-                <option value="All" th:selected="${selectedStatus==null || selectedStatus=='All'}">All Tasks</option>
-                <option value="Pending" th:selected="${selectedStatus=='Pending'}">Pending</option>
-                <option value="In Progress" th:selected="${selectedStatus=='In Progress'}">In Progress</option>
-                <option value="Completed" th:selected="${selectedStatus=='Completed'}">Completed</option>
-                <option value="Overdue">Overdue</option>
-            </select>
-            <button class="btn-action btn-secondary" type="submit">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>
-                Filter
-            </button>
-        </form>
-    </header>
+	    <div class="brand-section">
+	        <div class="brand-logo-icon">
+	            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+	                <polyline points="9 11 12 14 22 4"></polyline>
+	                <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+	            </svg>
+	        </div>
+	        <h1>TaskFlow</h1>
+	    </div>
+
+	    <div class="header-actions">
+
+	        <form th:action="@{/}" method="get" class="filter-form">
+	            <select name="status">
+	                <option value="All" th:selected="${selectedStatus==null || selectedStatus=='All'}">All Tasks</option>
+	                <option value="Pending" th:selected="${selectedStatus=='Pending'}">Pending</option>
+	                <option value="In Progress" th:selected="${selectedStatus=='In Progress'}">In Progress</option>
+	                <option value="Completed" th:selected="${selectedStatus=='Completed'}">Completed</option>
+	                <option value="Overdue">Overdue</option>
+	            </select>
+
+	            <button class="btn-action btn-secondary" type="submit">
+	                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+	                    <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+	                </svg>
+	                Filter
+	            </button>
+	        </form>
+
+	        <form th:action="@{/logout}" method="post">
+	            <button type="submit" class="logout-btn">
+	                Logout
+	            </button>
+	        </form>
+
+	    </div>
+
+	</header>
 
     <section class="form-card">
         <div class="form-card-title">

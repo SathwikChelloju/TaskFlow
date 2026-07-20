@@ -1,12 +1,13 @@
 package com.sathwik.taskflow.entity;
 
+import java.time.LocalDate;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import java.time.LocalDate;
-
-
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Task {
@@ -20,32 +21,26 @@ public class Task {
     private String description;
 
     private String status;
-    
+
     private LocalDate dueDate;
 
-    public LocalDate getDueDate() {
-		return dueDate;
-	}
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
-	public void setDueDate(LocalDate dueDate) {
-		this.dueDate = dueDate;
-	}
-
-	public Task() {
+    public Task() {
     }
 
-    
+    public Task(Long id, String title, String description, String status, LocalDate dueDate, User user) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.status = status;
+        this.dueDate = dueDate;
+        this.user = user;
+    }
 
-    public Task(Long id, String title, String description, String status, LocalDate dueDate) {
-		super();
-		this.id = id;
-		this.title = title;
-		this.description = description;
-		this.status = status;
-		this.dueDate = dueDate;
-	}
-
-	public Long getId() {
+    public Long getId() {
         return id;
     }
 
@@ -77,10 +72,26 @@ public class Task {
         this.status = status;
     }
 
-	@Override
-	public String toString() {
-		return "Task [id=" + id + ", title=" + title + ", description=" + description + ", status=" + status
-				+ ", dueDate=" + dueDate + "]";
-	}
+    public LocalDate getDueDate() {
+        return dueDate;
+    }
+
+    public void setDueDate(LocalDate dueDate) {
+        this.dueDate = dueDate;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    @Override
+    public String toString() {
+        return "Task [id=" + id + ", title=" + title + ", description=" + description + ", status=" + status
+                + ", dueDate=" + dueDate + "]";
+    }
 
 }
